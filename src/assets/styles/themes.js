@@ -5,6 +5,10 @@ export const theme = {
     neutral: "hsl(0, 0%, 98%)",
     secondary: "hsl(0, 0%, 100%)",
   },
+  media: {
+    medium: "(min-width: 1024px)",
+    large: "(min-width: 1200px)",
+  },
 };
 export const darkTheme = {
   ...theme,
