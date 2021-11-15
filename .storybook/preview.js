@@ -37,6 +37,7 @@ const withThemeProvider = (Story, context) => {
   const theme = getTheme(context.globals.theme);
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Story {...context} />
     </ThemeProvider>
   );
