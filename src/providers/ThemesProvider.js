@@ -9,7 +9,7 @@ const ThemesProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <ThemesContext.Provider value={isDarkMode}>
+    <ThemesContext.Provider value={{ isDarkMode, setIsDarkMode }}>
       <ThemeProvider theme={isDarkMode ? darkTheme : theme}>
         {children}
       </ThemeProvider>
