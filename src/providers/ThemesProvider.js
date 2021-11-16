@@ -8,15 +8,29 @@ export const ThemesContext = createContext();
 const ThemesProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  useEffect(() => {
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem("darkMode", !isDarkMode);
+  };
+
+  const setOSPreferedTheme = () => {
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
     if (prefersDarkScheme.matches) {
+      setIsDarkMode(true);
+    }
+  };
+
+  useEffect(() => {
+    const isDarkModeInLS = JSON.parse(localStorage.getItem("darkMode"));
+    if (isDarkModeInLS === null) {
+      setOSPreferedTheme();
+    } else if (isDarkModeInLS) {
       setIsDarkMode(true);
     }
   }, []);
 
   return (
-    <ThemesContext.Provider value={{ isDarkMode, setIsDarkMode }}>
+    <ThemesContext.Provider value={{ isDarkMode, toggleTheme }}>
       <ThemeProvider theme={isDarkMode ? darkTheme : theme}>
         {children}
       </ThemeProvider>

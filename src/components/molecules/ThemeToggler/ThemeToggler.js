@@ -6,12 +6,12 @@ import { useContext } from "react";
 import { StyledLabel } from "./ThemeToggler.styles";
 
 const ThemeToggler = () => {
-  const { isDarkMode, setIsDarkMode } = useContext(ThemesContext);
+  const { isDarkMode, toggleTheme } = useContext(ThemesContext);
   return (
     <StyledLabel htmlFor="darkMode">
       <input
         checked={isDarkMode}
-        onChange={() => setIsDarkMode(!isDarkMode)}
+        onChange={toggleTheme}
         type="checkbox"
         name="darkMode"
         id="darkMode"
