@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.header`
+export const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
