@@ -14,12 +14,18 @@ export const InfoWrapper = styled.div`
   padding: 24px;
 `;
 
-export const Flag = styled.div`
+export const Flag = styled.div.attrs(
+  ({ src }) =>
+    src && {
+      style: {
+        backgroundImage: `url(${src})`,
+      },
+    }
+)`
   height: 160px;
   width: 100%;
   display: flex;
   justify-content: center;
-  background-image: url(${({ src }) => src});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
