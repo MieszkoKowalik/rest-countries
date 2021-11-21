@@ -1,5 +1,5 @@
 import CountryDetail from "components/atoms/CountryDetail/CountryDetail";
-import { SkeletonLine } from "components/atoms/SkeletonLine/SkeletonLine";
+import SkeletonLine from "components/atoms/SkeletonLine/SkeletonLine";
 import { Skeleton } from "components/atoms/Skeleton/Skeleton";
 import {
   StyledSection,
