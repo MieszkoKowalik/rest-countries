@@ -8,21 +8,46 @@ const skeletonDummies = [{}, {}, {}, {}, {}, {}, {}, {}];
 
 const Countries = () => {
   const [countries, setCountries] = useState(skeletonDummies);
-  console.log(countries.length ? true : false);
+  const [displayedCountries, setDisplayedCountries] = useState(countries);
+
+  const [inputValue, setInputValue] = useState("");
   const fetchData = async () => {
-    const response = await fetch(API);
-    const data = await response.json();
-    setCountries(data);
+    try {
+      const response = await fetch(API);
+      const data = await response.json();
+      setCountries(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
+
+  useEffect(() => {
+    setDisplayedCountries(countries);
+  }, [countries]);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    const formatedInput = e.target.value.toLowerCase().trim();
+    const filteredCountries = countries.filter((country) => {
+      const formatedName = country.name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      return formatedName.startsWith(formatedInput);
+    });
+    console.log(filteredCountries);
+    setDisplayedCountries(filteredCountries);
+  };
   return (
     <StyledMain>
       <CardsWrapper>
+        <input type="text" value={inputValue} onChange={handleInputChange} />
         <CardsGrid>
-          {countries.map((country, index) => (
+          {displayedCountries.map((country, index) => (
             <Card key={index} {...country} />
           ))}
         </CardsGrid>
