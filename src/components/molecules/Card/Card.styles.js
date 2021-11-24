@@ -8,11 +8,6 @@ export const StyledSection = styled.section`
   box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.0294384);
   overflow: hidden;
   color: ${({ theme }) => theme.colors.primary};
-  cursor: pointer;
-  transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const InfoWrapper = styled.div`

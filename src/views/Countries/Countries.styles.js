@@ -16,6 +16,15 @@ export const CardsGrid = styled.div`
   display: grid;
   gap: 74px;
   grid-template-columns: repeat(auto-fill, 264px);
+
+  a {
+    transition: transform 0.2s;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+    }
+  }
 `;
 export const SearchBar = styled.div`
   display: flex;

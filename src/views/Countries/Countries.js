@@ -9,6 +9,7 @@ import {
 import Search from "components/molecules/Search/Search";
 import RegionFilter from "components/organisms/RegionFilter/RegionFilter";
 import useFetch from "hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const skeletonDummies = [
   { id: 1 },
@@ -74,7 +75,9 @@ const Countries = () => {
                 <Card key={country.id} {...country} />
               ))
             : currentCountries.map((country, index) => (
-                <Card key={country.name} {...country} />
+                <Link to={`country/${country.name}`} key={country.name}>
+                  <Card {...country} />
+                </Link>
               ))}
         </CardsGrid>
       </CardsWrapper>
