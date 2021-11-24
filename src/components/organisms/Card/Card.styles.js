@@ -40,9 +40,3 @@ export const Title = styled.h1`
     ${({ isResponsive }) => isResponsive && `font-size:2rem`}
   }
 `;
-export const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  ${({ hasBigGaps }) => hasBigGaps && `gap:9px`}
-`;
