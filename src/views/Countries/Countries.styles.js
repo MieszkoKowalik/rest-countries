@@ -15,5 +15,5 @@ export const CardsGrid = styled.div`
   justify-content: center;
   display: grid;
   gap: 74px;
-  grid-template-columns: repeat(auto-fit, 264px);
+  grid-template-columns: repeat(auto-fill, 264px);
 `;
