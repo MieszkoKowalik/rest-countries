@@ -4,6 +4,7 @@ export const StyledLabel = styled.label`
   position: relative;
   display: block;
   max-width: 480px;
+  flex-grow: 1;
   svg {
     position: absolute;
     top: 50%;

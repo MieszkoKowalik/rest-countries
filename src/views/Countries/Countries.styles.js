@@ -17,3 +17,10 @@ export const CardsGrid = styled.div`
   gap: 74px;
   grid-template-columns: repeat(auto-fill, 264px);
 `;
+export const SearchBar = styled.div`
+  display: flex;
+  gap: 40px;
+  padding-bottom: 32px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;

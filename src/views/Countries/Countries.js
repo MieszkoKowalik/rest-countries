@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import Card from "components/molecules/Card/Card";
-import { StyledMain, CardsWrapper, CardsGrid } from "./Countries.styles";
+import {
+  StyledMain,
+  CardsWrapper,
+  CardsGrid,
+  SearchBar,
+} from "./Countries.styles";
 import Search from "components/molecules/Search/Search";
 import RegionFilter from "components/organisms/RegionFilter/RegionFilter";
 import useFetch from "hooks/useFetch";
@@ -58,10 +63,11 @@ const Countries = () => {
   return (
     <StyledMain>
       <CardsWrapper>
-        <Search filterCountries={filterCountries}></Search>
-        <RegionFilter
-          filterCountriesbyRegion={filterCountriesbyRegion}
-        ></RegionFilter>
+        <SearchBar>
+          <Search filterCountries={filterCountries} />
+          <RegionFilter filterCountriesbyRegion={filterCountriesbyRegion} />
+        </SearchBar>
+
         <CardsGrid>
           {isLoading
             ? skeletonDummies.map((country, index) => (
