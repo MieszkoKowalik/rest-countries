@@ -1,60 +1,75 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Card from "components/molecules/Card/Card";
 import { StyledMain, CardsWrapper, CardsGrid } from "./Countries.styles";
 import Search from "components/molecules/Search/Search";
-const API =
-  "https://restcountries.com/v2/all?fields=name,flags,region,population,capital";
+import RegionFilter from "components/organisms/RegionFilter/RegionFilter";
+import useFetch from "hooks/useFetch";
 
-const skeletonDummies = [{}, {}, {}, {}, {}, {}, {}, {}];
+const skeletonDummies = [
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+  { id: 4 },
+  { id: 5 },
+  { id: 6 },
+  { id: 7 },
+  { id: 8 },
+];
+
+const API_URL = "https://restcountries.com/v2/all";
+const PARAMS = {
+  fields: "name,flags,region,population,capital",
+};
 
 const Countries = () => {
-  const [countriesData, setCountriesData] = useState(skeletonDummies);
-  const [currentCountries, setCountries] = useState(countriesData);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(API);
-      const data = await response.json();
-      setCountriesData(data);
-      setIsLoaded(true);
-    } catch (err) {
-      console.error(err);
-    }
+  const [currentCountries, setCurrentCountries] = useState([]);
+  const { data, isLoading } = useFetch(API_URL, PARAMS);
+  const [nameFilter, setNameFilter] = useState("");
+  const [regionsFilter, setRegionsFilter] = useState([]);
+
+  const filterCountries = (value) => {
+    const formatedValue = value.toLowerCase().trim();
+    setNameFilter(formatedValue);
+  };
+  const filterCountriesbyRegion = (value) => {
+    setRegionsFilter(value);
   };
 
-  const filterCountries = useCallback(
-    (value) => {
-      if (!isLoaded) return;
-      const formatedValue = value.toLowerCase().trim();
-      const filteredCountries = countriesData.filter((country) => {
-        const formatedName = country.name
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "");
-        return formatedName.startsWith(formatedValue);
-      });
-      console.log(filteredCountries);
-      setCountries(filteredCountries);
-    },
-    [countriesData, isLoaded]
-  );
+  useEffect(() => {
+    if (!data) return;
+    const filteredCountries = data.filter((country) => {
+      const formatedName = country.name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      return (
+        formatedName.startsWith(nameFilter) &&
+        (regionsFilter.length ? regionsFilter.includes(country.region) : true)
+      );
+    });
+    setCurrentCountries(filteredCountries);
+  }, [data, nameFilter, regionsFilter]);
 
   useEffect(() => {
-    setCountries(countriesData);
-  }, [countriesData]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+    if (!data) return;
+    setCurrentCountries(data);
+  }, [data]);
 
   return (
     <StyledMain>
       <CardsWrapper>
         <Search filterCountries={filterCountries}></Search>
+        <RegionFilter
+          filterCountriesbyRegion={filterCountriesbyRegion}
+        ></RegionFilter>
         <CardsGrid>
-          {currentCountries.map((country, index) => (
-            <Card key={index} {...country} />
-          ))}
+          {isLoading
+            ? skeletonDummies.map((country, index) => (
+                <Card key={country.id} {...country} />
+              ))
+            : currentCountries.map((country, index) => (
+                <Card key={country.name} {...country} />
+              ))}
         </CardsGrid>
       </CardsWrapper>
     </StyledMain>
