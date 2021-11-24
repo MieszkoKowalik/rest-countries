@@ -31,12 +31,3 @@ export const Flag = styled.div.attrs(
   background-repeat: no-repeat;
   box-shadow: inset 0 0 3px #00000028;
 `;
-
-export const Title = styled.h1`
-  font-size: 1.125rem;
-  margin-bottom: 16px;
-
-  @media ${({ theme }) => theme.media.medium} {
-    ${({ isResponsive }) => isResponsive && `font-size:2rem`}
-  }
-`;

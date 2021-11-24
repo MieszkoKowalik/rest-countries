@@ -1,8 +1,9 @@
 import CountryDetail from "components/atoms/CountryDetail/CountryDetail";
 import SkeletonLine from "components/atoms/SkeletonLine/SkeletonLine";
 import { Skeleton } from "components/atoms/Skeleton/Skeleton";
-import { StyledSection, Flag, InfoWrapper, Title } from "./Card.styles";
+import { StyledSection, Flag, InfoWrapper } from "./Card.styles";
 import { Details } from "components/molecules/Details/Details";
+import { Title } from "components/atoms/Title/Title";
 
 const Card = ({ name, population, region, flags, capital }) => {
   return (
