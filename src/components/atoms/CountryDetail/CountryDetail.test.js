@@ -14,8 +14,8 @@ describe("Country Detail", () => {
     expect(screen.queryByText(/Capital/)).toBeInTheDocument();
     expect(screen.queryByText(/London/)).toBeInTheDocument();
   });
-  it("Displays skeleton line if info isn't present", () => {
-    render(<CountryDetail label="Capital" />);
+  it("Displays skeleton line if prop isLoading is true", () => {
+    render(<CountryDetail label="Capital" isLoading />);
     expect(screen.queryByText(/Capital/)).not.toBeInTheDocument();
     expect(screen.getByTestId("skeleton")).toBeInTheDocument();
   });

@@ -6,17 +6,18 @@ const useFetch = (initialUrl, initialParams = {}, skip = false) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const queryString = Object.keys(params)
-    .map(
-      (key) =>
-        "?" + encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
-    )
-    .join("&");
+  const queryString =
+    "?" +
+    Object.keys(params)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
+      )
+      .join("&");
   useEffect(() => {
     const abortController = new AbortController();
     const fetchData = async () => {
       if (skip) return;
-
+      setIsLoading(true);
       try {
         const response = await fetch(`${url}${queryString}`, {
           signal: abortController.signal,

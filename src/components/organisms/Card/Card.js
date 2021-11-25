@@ -5,19 +5,20 @@ import { StyledSection, Flag, InfoWrapper } from "./Card.styles";
 import { Details } from "components/molecules/Details/Details";
 import { Title } from "components/atoms/Title/Title";
 
-const Card = ({ name, population, region, flags, capital }) => {
+const Card = ({ name, population, region, flags, capital, isLoading }) => {
   return (
     <StyledSection>
-      <Flag src={flags && flags.svg}>{flags ? null : <Skeleton />}</Flag>
+      <Flag src={flags && flags.svg}>{isLoading && <Skeleton />}</Flag>
       <InfoWrapper>
         <Title>{name ? name : <SkeletonLine></SkeletonLine>}</Title>
         <Details>
           <CountryDetail
+            isLoading={isLoading}
             label="Population"
             info={population && population.toLocaleString()}
           />
-          <CountryDetail label="Region" info={region} />
-          <CountryDetail label="Capital" info={capital} />
+          <CountryDetail isLoading={isLoading} label="Region" info={region} />
+          <CountryDetail isLoading={isLoading} label="Capital" info={capital} />
         </Details>
       </InfoWrapper>
     </StyledSection>

@@ -1,10 +1,10 @@
 import SkeletonLine from "components/atoms/SkeletonLine/SkeletonLine";
 import React from "react";
 import { StyledP } from "./CountryDetail.styles";
-const CountryDetail = ({ label, info, isResponsive = false }) => {
+const CountryDetail = ({ label, info, isResponsive = false, isLoading }) => {
   return (
     <StyledP isResponsive={isResponsive}>
-      {info !== undefined ? (
+      {!isLoading ? (
         <>
           <span>{label}: </span>
           {info}

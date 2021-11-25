@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "components/molecules/Card/Card";
+import Card from "components/organisms/Card/Card";
 import {
   StyledMain,
   CardsWrapper,
@@ -72,11 +72,11 @@ const Countries = () => {
         <CardsGrid>
           {isLoading
             ? skeletonDummies.map((country, index) => (
-                <Card key={country.id} {...country} />
+                <Card isLoading key={country.id} {...country} />
               ))
             : currentCountries.map((country, index) => (
                 <Link to={`country/${country.name}`} key={country.name}>
-                  <Card {...country} />
+                  <Card isLoading={isLoading} {...country} />
                 </Link>
               ))}
         </CardsGrid>
