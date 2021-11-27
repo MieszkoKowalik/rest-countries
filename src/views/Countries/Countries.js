@@ -22,18 +22,19 @@ const skeletonDummies = [
   { id: 8 },
 ];
 
-const API_URL = "https://restcountries.com/v2/all";
+const API_URL = "https://restcountries.com/v3.1/all";
 const PARAMS = {
   fields: "name,flags,region,population,capital",
 };
 
 const Countries = () => {
   const [currentCountries, setCurrentCountries] = useState([]);
+  const [countriesData, setCountriesData] = useState([]);
   const { data, isLoading } = useFetch(API_URL, PARAMS);
   const [nameFilter, setNameFilter] = useState("");
   const [regionsFilter, setRegionsFilter] = useState([]);
 
-  const filterCountries = (value) => {
+  const filterCountriesByName = (value) => {
     const formatedValue = value.toLowerCase().trim();
     setNameFilter(formatedValue);
   };
@@ -43,7 +44,7 @@ const Countries = () => {
 
   useEffect(() => {
     if (!data) return;
-    const filteredCountries = data.filter((country) => {
+    const filteredCountries = countriesData.filter((country) => {
       const formatedName = country.name
         .toLowerCase()
         .normalize("NFD")
@@ -54,18 +55,25 @@ const Countries = () => {
       );
     });
     setCurrentCountries(filteredCountries);
-  }, [data, nameFilter, regionsFilter]);
+  }, [data, countriesData, nameFilter, regionsFilter]);
 
   useEffect(() => {
     if (!data) return;
-    setCurrentCountries(data);
+    const countries = data.map((country) => ({
+      name: country.name.common,
+      flag: country.flags.svg,
+      population: country.population,
+      capital: country.capital,
+      region: country.region,
+    }));
+    setCountriesData(countries);
   }, [data]);
 
   return (
     <StyledMain>
       <CardsWrapper>
         <SearchBar>
-          <Search filterCountries={filterCountries} />
+          <Search filterCountries={filterCountriesByName} />
           <RegionFilter filterCountriesbyRegion={filterCountriesbyRegion} />
         </SearchBar>
 
