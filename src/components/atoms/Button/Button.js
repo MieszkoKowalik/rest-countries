@@ -13,7 +13,7 @@ export const Button = styled.button`
   border: none;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     transform: scale(1.1);
   }
   @media ${({ theme }) => theme.media.medium} {
