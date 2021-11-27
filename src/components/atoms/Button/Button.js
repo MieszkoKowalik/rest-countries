@@ -10,6 +10,7 @@ export const Button = styled.button`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.primary};
   font-size: ${({ $isBig }) => ($isBig ? "0.875rem" : "0.75rem")};
+  border: none;
 
   &:hover,
   &:focus {
