@@ -10,7 +10,7 @@ const Card = ({ name, population, region, flags, capital, isLoading }) => {
     <StyledSection>
       <Flag src={flags && flags.svg}>{isLoading && <Skeleton />}</Flag>
       <InfoWrapper>
-        <Title>{name ? name : <SkeletonLine></SkeletonLine>}</Title>
+        <Title>{isLoading ? <SkeletonLine /> : name}</Title>
         <Details>
           <CountryDetail
             isLoading={isLoading}
