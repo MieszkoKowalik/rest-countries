@@ -14,9 +14,12 @@ export const CardsGrid = styled.div`
   width: 100%;
   justify-content: center;
   display: grid;
-  gap: 74px;
+  gap: 40px;
   grid-template-columns: repeat(auto-fill, 264px);
 
+  @media ${({ theme }) => theme.media.medium} {
+    gap: 74px;
+  }
   a {
     transition: transform 0.2s;
     text-decoration: none;
