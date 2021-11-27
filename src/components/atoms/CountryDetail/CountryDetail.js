@@ -6,8 +6,8 @@ const CountryDetail = ({ label, info, isResponsive = false, isLoading }) => {
     <StyledP isResponsive={isResponsive}>
       {!isLoading ? (
         <>
-          <span>{label}: </span>
-          {info}
+          <span>{label}:&nbsp;</span>
+          {info && info.length ? info : "N/A"}
         </>
       ) : (
         <SkeletonLine></SkeletonLine>

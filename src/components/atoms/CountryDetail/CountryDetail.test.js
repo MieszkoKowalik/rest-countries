@@ -19,4 +19,12 @@ describe("Country Detail", () => {
     expect(screen.queryByText(/Capital/)).not.toBeInTheDocument();
     expect(screen.getByTestId("skeleton")).toBeInTheDocument();
   });
+  it("Displays N/A text if no info value provided", () => {
+    render(<CountryDetail label="Capital" />);
+    expect(screen.queryByText(/N\/A/)).toBeInTheDocument();
+  });
+  it("Displays N/A text if info value is empty array", () => {
+    render(<CountryDetail label="Capital" info={[]} />);
+    expect(screen.queryByText(/N\/A/)).toBeInTheDocument();
+  });
 });
