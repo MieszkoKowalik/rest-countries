@@ -19,7 +19,7 @@ const Search = ({ filterCountries }) => {
       <SearchIcon />
       <input
         name="Search"
-        type="text"
+        type="search"
         id="search"
         placeholder="Search for a country…"
         value={inputValue}
