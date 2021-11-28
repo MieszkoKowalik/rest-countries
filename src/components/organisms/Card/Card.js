@@ -15,7 +15,7 @@ const Card = ({ name, population, region, flag, capital, isLoading }) => {
           <CountryDetail
             isLoading={isLoading}
             label="Population"
-            info={population && population.toLocaleString()}
+            info={population}
           />
           <CountryDetail isLoading={isLoading} label="Region" info={region} />
           <CountryDetail isLoading={isLoading} label="Capital" info={capital} />

@@ -62,7 +62,7 @@ const Countries = () => {
     const countries = data.map((country) => ({
       name: country.name.common,
       flag: country.flags.svg,
-      population: country.population,
+      population: country.population.toLocaleString(),
       capital: country.capital,
       region: country.region,
     }));
