@@ -9,7 +9,8 @@ import BorderList from "components/molecules/BorderList/BorderList";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Button } from "components/atoms/Button/Button";
+import { ReactComponent as ArrowIcon } from "assets/images/arrow-icon.svg";
+import { ButtonWithIcon } from "components/atoms/ButtonWithIcon/ButtonWithIcon";
 
 export const BorderWrapper = styled.div`
   color: ${({ theme }) => theme.colors.primary};
@@ -126,9 +127,10 @@ const Country = () => {
     <StyledMain>
       <Wrapper>
         <TopBar>
-          <Button $isBig as={Link} to="/">
+          <ButtonWithIcon $isBig as={Link} to="/">
+            <ArrowIcon />
             Back
-          </Button>
+          </ButtonWithIcon>
         </TopBar>
 
         <InfoWrapper>
