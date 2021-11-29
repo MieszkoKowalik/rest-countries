@@ -20,7 +20,7 @@ export const StyledLabel = styled.label`
     color: ${({ theme }) => theme.colors.neutralDark};
     border-radius: 5px;
     border: none;
-
+    box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.2);
     &::placeholder {
       color: ${({ theme }) => theme.colors.neutralDark};
     }

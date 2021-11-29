@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
   padding: 0 16px;
   height: 80px;
   background-color: ${({ theme }) => theme.colors.secondary};
+  box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.1);
 `;
 export const ViewWrapper = styled.div`
   display: flex;

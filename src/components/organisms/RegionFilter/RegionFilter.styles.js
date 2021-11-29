@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     position: relative;
     font-size: 0.75rem;
     color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+    box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.2);
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -50,7 +50,7 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+  box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.2);
 
   li {
     font-size: 0.75rem;
