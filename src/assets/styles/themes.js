@@ -14,7 +14,7 @@ export const darkTheme = {
   ...theme,
   colors: {
     primary: "hsl(0, 0%, 100%)",
-    neutralDark: "hsl(0, 0%, 95%)",
+    neutralDark: "hsl(0, 0%, 85%)",
     neutral: "hsl(207, 26%, 17%)",
     secondary: "hsl(209, 23%, 22%)",
   },
