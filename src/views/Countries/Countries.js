@@ -94,7 +94,10 @@ const Countries = () => {
                 <Card isLoading key={country.id} {...country} />
               ))
             : currentCountries.map((country, index) => (
-                <Link to={`country/${country.name}`} key={country.name}>
+                <Link
+                  to={`country/${encodeURIComponent(country.name)}`}
+                  key={country.name}
+                >
                   <Card isLoading={isLoading} {...country} />
                 </Link>
               ))}
