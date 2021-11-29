@@ -143,6 +143,7 @@ const Country = () => {
       borders: country.borders,
     });
   }, [data]);
+
   useEffect(() => {
     updateUrl(API_URL + name);
   }, [name, updateUrl]);
@@ -163,7 +164,10 @@ const Country = () => {
               <Skeleton />
             ) : (
               <ImgWrapper>
-                <img src={countryData.flag} alt="" />
+                <img
+                  src={countryData.flag}
+                  alt={"Flag of " + countryData.name}
+                />
               </ImgWrapper>
             )}
           </Flag>
