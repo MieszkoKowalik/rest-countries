@@ -8,7 +8,7 @@ import { Title } from "components/atoms/Title/Title";
 const Card = ({ name, population, region, flag, capital, isLoading }) => {
   return (
     <StyledSection>
-      <Flag src={flag}>{isLoading && <Skeleton />}</Flag>
+      <Flag source={flag}>{isLoading && <Skeleton />}</Flag>
       <InfoWrapper>
         <Title>{isLoading ? <SkeletonLine /> : name}</Title>
         <Details>

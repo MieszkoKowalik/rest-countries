@@ -15,10 +15,10 @@ export const InfoWrapper = styled.div`
 `;
 
 export const Flag = styled.div.attrs(
-  ({ src }) =>
-    src && {
+  ({ source }) =>
+    source && {
       style: {
-        backgroundImage: `url(${src})`,
+        backgroundImage: `url(${source})`,
       },
     }
 )`
