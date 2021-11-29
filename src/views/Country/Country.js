@@ -15,7 +15,7 @@ import {
   ImgWrapper,
   DetailsWrapper,
   BorderWrapper,
-} from "views/Countries/Country.styles";
+} from "views/Country/Country.styles";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ReactComponent as ArrowIcon } from "assets/images/arrow-icon.svg";
@@ -50,8 +50,6 @@ const Country = () => {
   const { name } = useParams();
   const { data, isLoading, updateUrl } = useFetch(API_URL + name, PARAMS);
   const [countryData, setCountryData] = useState(defaultData);
-  console.log(countryData, "state");
-  console.log(data);
 
   useEffect(() => {
     if (!data) return;
