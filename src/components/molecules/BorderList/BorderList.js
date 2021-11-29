@@ -2,10 +2,7 @@ import React from "react";
 import useFetch from "hooks/useFetch";
 import { Link } from "react-router-dom";
 import { Button } from "components/atoms/Button/Button";
-import styled from "styled-components";
 import { Skeleton } from "components/atoms/Skeleton/Skeleton";
-
-export const StyledLink = styled(Link)``;
 
 const API_URL = "https://restcountries.com/v3.1/alpha";
 let params = {
